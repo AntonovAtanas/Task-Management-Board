@@ -5,7 +5,10 @@
   "projects": {
     "kanban-task-management": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+        "standalone": true
+      }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
