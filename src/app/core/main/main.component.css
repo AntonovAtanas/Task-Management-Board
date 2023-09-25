@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 25px;
+}
+
+app-todo, app-doing, app-done {
+    width: 280px;
+}

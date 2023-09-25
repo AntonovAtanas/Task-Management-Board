@@ -1,0 +1,20 @@
+.todo-title {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.round {
+    background-color: #49C4E5;
+    width: 15px;
+    height: 15px;
+    border-radius: 999px;
+}
+
+span {
+    font-size: 12px;
+    color: #828FA3;
+    text-transform: uppercase;
+    letter-spacing: 2.40px;
+    font-weight: 700;
+}
