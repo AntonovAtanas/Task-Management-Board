@@ -6,5 +6,8 @@
 }
 
 app-todo, app-doing, app-done {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     width: 280px;
 }
