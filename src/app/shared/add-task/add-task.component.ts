@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/interfaces/Task';
+import { TaskService } from 'src/app/services/task-service.service';
 
 @Component({
   selector: 'app-add-task',
@@ -15,9 +16,13 @@ import { Task } from 'src/app/interfaces/Task';
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent {
-  constructor(private matDialogReference: MatDialog) {}
+  constructor(private taskService: TaskService, private matDialogReference: MatDialog) {}
 
   onCreate(createForm: NgForm) {
+
+    if (createForm.invalid) {
+      return
+    }
 
     let userTask = createForm.value.task;
 
@@ -26,7 +31,7 @@ export class AddTaskComponent {
       _taskId: this.generateId()
     }
 
-    this.setTask(newTask);
+    this.taskService.addTask(newTask);
 
     this.matDialogReference.closeAll();
   }
@@ -34,12 +39,4 @@ export class AddTaskComponent {
   generateId(): string {
     return uuid();
   };
-
-  setTask(newTask: Task): void {
-    let todoTasks: Task[] = JSON.parse(localStorage.getItem('todo') || '[]');
-
-    todoTasks.push(newTask);
-
-    localStorage.setItem('todo', JSON.stringify(todoTasks));
-  }
 }

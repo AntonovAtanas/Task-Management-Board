@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Task } from 'src/app/interfaces/Task';
 
 @Component({
   selector: 'app-task-card',
@@ -9,5 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./task-card.component.css']
 })
 export class TaskCardComponent {
+  @Input() todoTask!: Task;
 
+
+  onDelete(id: string):void {
+
+  }
 }

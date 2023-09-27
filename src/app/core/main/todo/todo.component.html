@@ -1,7 +1,7 @@
 <div class="todo-title">
     <div class="round"></div>
-    <span>Todo (0)</span>
+    <span>Todo ({{todoTasks.length}})</span>
 </div>
 <div class="tasks-container">
-    <app-task-card></app-task-card>
+    <app-task-card *ngFor="let card of todoTasks" [todoTask]="card"></app-task-card>
 </div>
