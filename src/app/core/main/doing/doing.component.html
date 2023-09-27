@@ -1,7 +1,15 @@
 <div class="todo-title">
-    <div class="round"></div>
-    <span>Doing (0)</span>
+  <div class="round"></div>
+  <span>Doing (0)</span>
 </div>
-<div class="tasks-container">
-    <app-task-card></app-task-card>
+<div
+  class="tasks-container"
+  id="doing"
+  cdkDropList
+  #doing="cdkDropList"
+  [cdkDropListData]="doingTasks"
+  cdkDropListConnectedTo="todo"
+  (cdkDropListDropped)="drop($event)"
+>
+  <app-task-card></app-task-card>
 </div>

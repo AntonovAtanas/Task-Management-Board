@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
+
 import { TaskCardComponent } from 'src/app/shared/task-card/task-card.component';
 import { Task } from 'src/app/interfaces/Task';
 import { TaskService } from 'src/app/services/task-service.service';
@@ -9,7 +11,8 @@ import { TaskService } from 'src/app/services/task-service.service';
   standalone: true,
   imports: [
     CommonModule,
-    TaskCardComponent
+    TaskCardComponent,
+    DragDropModule
   ],
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
@@ -20,6 +23,11 @@ export class TodoComponent implements OnInit {
   constructor(private taskService: TaskService){  }
 
   ngOnInit(): void {
+
     this.todoTasks = this.taskService.todoStore();
   };
+
+  drop(event: CdkDragDrop<Task[]>) {
+    this.taskService.drop(event);
+  }
 }

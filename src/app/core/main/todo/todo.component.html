@@ -1,7 +1,17 @@
 <div class="todo-title">
-    <div class="round"></div>
-    <span>Todo ({{todoTasks.length}})</span>
+  <div class="round"></div>
+  <span>Todo ({{ todoTasks.length }})</span>
 </div>
-<div class="tasks-container">
-    <app-task-card *ngFor="let card of todoTasks" [todoTask]="card"></app-task-card>
+<div
+  class="tasks-container"
+  id="todo"
+  cdkDropList
+  [cdkDropListData]="todoTasks"
+  cdkDropListConnectedTo="doing"
+  (cdkDropListDropped)="drop($event)"
+>
+  <app-task-card
+    *ngFor="let card of todoTasks"
+    [todoTask]="card"
+  ></app-task-card>
 </div>

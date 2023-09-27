@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Task } from '../interfaces/Task';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +13,31 @@ export class TaskService {
 
   constructor() { }
 
-  addTask(newTask: Task){
+  addTask(newTask: Task) {
     this.todoStore.mutate(store => store.push(newTask));
     if (!localStorage.getItem('todoStore')){
       localStorage.setItem('todoStore', '[]');
     }
 
-    let todoTasks = JSON.parse(localStorage.getItem('todoStore')!);
+    let todoTasks = JSON.parse(localStorage.getItem('todoStore')!)
 
     todoTasks.push(newTask);
 
     localStorage.setItem('todoStore', JSON.stringify(todoTasks));
-
   };
 
-  deleteTask(){
-
+  deleteTask() {
+    // todo
   };
+
+  drop(event: CdkDragDrop<Task[]>) {
+    if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+        transferArrayItem(event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex);
+    }
+}
 }

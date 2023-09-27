@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoComponent } from './todo/todo.component';
 import { DoingComponent } from './doing/doing.component';
 import { DoneComponent } from './done/done.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
@@ -11,11 +12,11 @@ import { DoneComponent } from './done/done.component';
     CommonModule,
     TodoComponent,
     DoingComponent,
-    DoneComponent
+    DoneComponent,
+    DragDropModule
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-
 }
