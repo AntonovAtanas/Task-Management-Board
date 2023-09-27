@@ -1,9 +1,3 @@
-.tasks-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 .todo-title {
     display: flex;
     justify-content: flex-start;

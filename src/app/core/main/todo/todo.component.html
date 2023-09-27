@@ -7,7 +7,7 @@
   id="todo"
   cdkDropList
   [cdkDropListData]="todoTasks"
-  cdkDropListConnectedTo="doing"
+  [cdkDropListConnectedTo]="['doing', 'done']"
   (cdkDropListDropped)="drop($event)"
 >
   <app-task-card

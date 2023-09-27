@@ -12,6 +12,13 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 200px;
+}
+
 .mat-mdc-dialog-surface {
     background-color: #2B2C37;
     border: 4px solid #2B2C37;

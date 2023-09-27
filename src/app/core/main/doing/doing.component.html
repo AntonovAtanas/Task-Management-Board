@@ -1,6 +1,6 @@
 <div class="todo-title">
   <div class="round"></div>
-  <span>Doing (0)</span>
+  <span>Doing ({{ doingTasks.length }})</span>
 </div>
 <div
   class="tasks-container"
@@ -8,12 +8,8 @@
   cdkDropList
   #doing="cdkDropList"
   [cdkDropListData]="doingTasks"
-  cdkDropListConnectedTo="todo"
+  [cdkDropListConnectedTo]="['todo', 'done']"
   (cdkDropListDropped)="drop($event)"
 >
-  <app-task-card
-  *ngFor="let card of doingTasks"
-    [task]="card"
-  >
-</app-task-card>
+  <app-task-card *ngFor="let card of doingTasks" [task]="card"> </app-task-card>
 </div>
