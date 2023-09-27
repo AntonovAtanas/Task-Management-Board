@@ -26,6 +26,8 @@ export class TaskService {
     localStorage.setItem('todoStore', JSON.stringify(todoTasks));
   };
 
+  // moving cards issue? - doing store not implemented
+
   deleteTask() {
     // todo
   };
@@ -34,6 +36,8 @@ export class TaskService {
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      console.log('else')
+      // issue - not entering in else
         transferArrayItem(event.previousContainer.data,
             event.container.data,
             event.previousIndex,

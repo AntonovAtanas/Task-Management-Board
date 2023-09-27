@@ -13,7 +13,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   styleUrls: ['./task-card.component.css']
 })
 export class TaskCardComponent {
-  @Input() todoTask!: Task;
+  @Input() task!: Task;
 
   constructor(private taskService: TaskService){}
 

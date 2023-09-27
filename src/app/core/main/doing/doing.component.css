@@ -18,3 +18,7 @@ span {
     letter-spacing: 2.40px;
     font-weight: 700;
 }
+
+.tasks-container {
+    min-height: 200px;
+}

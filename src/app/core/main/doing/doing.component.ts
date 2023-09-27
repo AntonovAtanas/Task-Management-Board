@@ -5,7 +5,6 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 import { Task } from 'src/app/interfaces/Task';
 import { TaskService } from 'src/app/services/task-service.service';
-import { TodoComponent } from '../todo/todo.component';
 
 @Component({
   selector: 'app-doing',
