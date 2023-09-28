@@ -11,5 +11,8 @@
   [cdkDropListConnectedTo]="['todo', 'doing']"
   (cdkDropListDropped)="drop($event)"
 >
-  <app-task-card *ngFor="let card of doneTasks" [task]="card"> </app-task-card>
+  <ng-container *ngFor="let card of doneTasks">
+    <app-task-card *ngIf="card.status === 'done'" [task]="card">
+    </app-task-card>
+  </ng-container>
 </div>

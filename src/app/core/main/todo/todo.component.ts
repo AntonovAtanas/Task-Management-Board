@@ -24,7 +24,7 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.todoTasks = this.taskService.todoStore();
+    this.todoTasks = this.taskService.taskStore();
   };
 
   drop(event: CdkDragDrop<Task[]>) {

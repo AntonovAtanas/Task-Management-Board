@@ -7,23 +7,21 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TaskService {
 
-  todoStore = signal<Task[]>(JSON.parse(localStorage.getItem('todoStore') || '[]'));
-  doingStore = signal<Task[]>([]);
-  doneStore = signal<Task[]>([]);
+  taskStore = signal<Task[]>(JSON.parse(localStorage.getItem('taskStore') || '[]'));
 
   constructor() { }
 
   addTask(newTask: Task) {
-    this.todoStore.mutate(store => store.push(newTask));
-    if (!localStorage.getItem('todoStore')){
-      localStorage.setItem('todoStore', '[]');
+    this.taskStore.mutate(data => data.push(newTask));
+    if (!localStorage.getItem('taskStore')){
+      localStorage.setItem('taskStore', '[]');
     }
 
-    let todoTasks = JSON.parse(localStorage.getItem('todoStore')!)
+    let todoTasks = JSON.parse(localStorage.getItem('taskStore')!)
 
     todoTasks.push(newTask);
 
-    localStorage.setItem('todoStore', JSON.stringify(todoTasks));
+    localStorage.setItem('taskStore', JSON.stringify(todoTasks));
   };
 
   deleteTask() {
@@ -34,6 +32,16 @@ export class TaskService {
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+        // TODO: index issue when in 
+        // TODO: not persisting in localstorage because of not changed data there
+
+        switch (event.item.data.status) {
+          case 'todo': event.item.data.status = event.container.id; break;
+          case 'doing': event.item.data.status = event.container.id; break;
+          case 'done': event.item.data.status = event.container.id; break;
+        }
+        console.log(event)
+
         transferArrayItem(event.previousContainer.data,
             event.container.data,
             event.previousIndex,

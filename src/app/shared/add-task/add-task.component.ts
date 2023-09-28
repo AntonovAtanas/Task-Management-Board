@@ -28,7 +28,8 @@ export class AddTaskComponent {
 
     const newTask: Task = {
       task: userTask,
-      _taskId: this.generateId()
+      _taskId: this.generateId(),
+      status: 'todo'
     }
 
     this.taskService.addTask(newTask);
