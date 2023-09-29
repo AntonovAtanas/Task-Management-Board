@@ -9,8 +9,6 @@ export class TaskService {
 
   taskStore = signal<Task[]>(JSON.parse(localStorage.getItem('taskStore') || '[]'));
 
-  constructor() { }
-
   addTask(newTask: Task) {
     this.taskStore.mutate(data => data.push(newTask));
     if (!localStorage.getItem('taskStore')){
@@ -32,8 +30,7 @@ export class TaskService {
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-        // TODO: index issue when in 
-        // TODO: not persisting in localstorage because of not changed data there
+        // TODO: index issue when moving
 
         switch (event.item.data.status) {
           case 'todo': event.item.data.status = event.container.id; break;
@@ -61,6 +58,6 @@ export class TaskService {
       }
       
       localStorage.setItem('taskStore', JSON.stringify(todoTasks));
-      this.taskStore.set(todoTasks);
+      this.taskStore.mutate(task => task = todoTasks);
     }
 }

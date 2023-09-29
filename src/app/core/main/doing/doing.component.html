@@ -1,6 +1,6 @@
 <div class="todo-title">
   <div class="round"></div>
-  <span>Doing ({{ doingTasks.length }})</span>
+  <span>Doing ({{ doingTasks | taskCounter:'doing' }})</span>
 </div>
 <div
   class="tasks-container"

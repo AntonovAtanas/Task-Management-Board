@@ -4,6 +4,7 @@ import { TaskCardComponent } from 'src/app/shared/task-card/task-card.component'
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { Task } from 'src/app/interfaces/Task';
 import { TaskService } from 'src/app/services/task-service.service';
+import { TaskCounterPipe } from 'src/app/shared/task-counter.pipe';
 
 @Component({
   selector: 'app-done',
@@ -11,7 +12,8 @@ import { TaskService } from 'src/app/services/task-service.service';
   imports: [
     CommonModule, 
     TaskCardComponent,
-    DragDropModule
+    DragDropModule,
+    TaskCounterPipe
   ],
   templateUrl: './done.component.html',
   styleUrls: ['./done.component.css'],
@@ -28,4 +30,6 @@ export class DoneComponent {
   drop(event: CdkDragDrop<Task[]>) {
     this.taskService.drop(event);
   };
+
+
 }

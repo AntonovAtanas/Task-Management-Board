@@ -1,6 +1,6 @@
 <div class="todo-title">
   <div class="round"></div>
-  <span>Done ({{ doneTasks.length }})</span>
+  <span>Done ({{ doneTasks | taskCounter:'done' }})</span>
 </div>
 <div
   class="tasks-container"

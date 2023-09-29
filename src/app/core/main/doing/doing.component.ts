@@ -5,6 +5,7 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 
 import { Task } from 'src/app/interfaces/Task';
 import { TaskService } from 'src/app/services/task-service.service';
+import { TaskCounterPipe } from 'src/app/shared/task-counter.pipe';
 
 @Component({
   selector: 'app-doing',
@@ -12,7 +13,8 @@ import { TaskService } from 'src/app/services/task-service.service';
   imports: [
     CommonModule,
     TaskCardComponent,
-    DragDropModule
+    DragDropModule,
+    TaskCounterPipe
   ],
   templateUrl: './doing.component.html',
   styleUrls: ['./doing.component.css']
