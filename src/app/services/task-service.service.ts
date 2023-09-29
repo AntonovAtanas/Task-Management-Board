@@ -40,12 +40,27 @@ export class TaskService {
           case 'doing': event.item.data.status = event.container.id; break;
           case 'done': event.item.data.status = event.container.id; break;
         }
-        console.log(event)
+        
+        // update taskStore
+        this.saveTask(event.item.data);
 
         transferArrayItem(event.previousContainer.data,
             event.container.data,
             event.previousIndex,
             event.currentIndex);
     }
-}
+  }
+    saveTask(updatedTask: Task) {
+
+      let todoTasks = JSON.parse(localStorage.getItem('taskStore')!)
+      
+      for (let i = 0; i < todoTasks.length; i++) {
+        if (todoTasks[i]._taskId === updatedTask._taskId) {
+          todoTasks[i].status = updatedTask.status
+        }
+      }
+      
+      localStorage.setItem('taskStore', JSON.stringify(todoTasks));
+      this.taskStore.set(todoTasks);
+    }
 }
