@@ -7,17 +7,17 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TaskService {
 
-  taskStore = signal<Task[]>(JSON.parse(localStorage.getItem('taskStore') || '[]'));
+  taskStore = signal(JSON.parse(localStorage.getItem('taskStore') || '{"todo":[],"doing":[],"done":[]}'));
 
   addTask(newTask: Task) {
-    this.taskStore.mutate(data => data.push(newTask));
+    this.taskStore.mutate(data => data.todo.push(newTask));
     if (!localStorage.getItem('taskStore')){
-      localStorage.setItem('taskStore', '[]');
+      localStorage.setItem('taskStore', '{"todo":[],"doing":[],"done":[]}');
     }
 
     let todoTasks = JSON.parse(localStorage.getItem('taskStore')!)
 
-    todoTasks.push(newTask);
+    todoTasks.todo.push(newTask);
 
     localStorage.setItem('taskStore', JSON.stringify(todoTasks));
   };
@@ -27,10 +27,15 @@ export class TaskService {
   };
 
   drop(event: CdkDragDrop<Task[]>) {
+    const changedTask = event.item.data
+
+    
     if (event.previousContainer === event.container) {
+        this.saveTask(changedTask, event.previousIndex, event.currentIndex, event.previousContainer.id, event.container.id);
+
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-        // TODO: index issue when moving
+        // TODO: issue when move tasks from other to new containers
 
         switch (event.item.data.status) {
           case 'todo': event.item.data.status = event.container.id; break;
@@ -39,17 +44,27 @@ export class TaskService {
         }
         
         // update taskStore
-        this.saveTask(event.item.data);
-
+        this.saveTask(changedTask, event.previousIndex, event.currentIndex, event.previousContainer.id, event.container.id);
+        
         transferArrayItem(event.previousContainer.data,
-            event.container.data,
-            event.previousIndex,
-            event.currentIndex);
-    }
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+          
+        }
   }
-    saveTask(updatedTask: Task) {
+    saveTask(updatedTask: Task, previousIndex:number, updatedIndex: number, oldContainer: string, newContainer: string) {
 
       let todoTasks = JSON.parse(localStorage.getItem('taskStore')!)
+
+      if (oldContainer !== newContainer) {
+        todoTasks[oldContainer].splice(previousIndex, 1);
+      } else {
+        todoTasks[newContainer].splice(previousIndex, 1);
+      }
+
+      todoTasks[newContainer].splice(updatedIndex, 0, updatedTask);
+
       
       for (let i = 0; i < todoTasks.length; i++) {
         if (todoTasks[i]._taskId === updatedTask._taskId) {

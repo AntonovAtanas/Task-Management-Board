@@ -26,7 +26,7 @@ export class DoingComponent implements OnInit{
   constructor(private taskService: TaskService){}
 
   ngOnInit(): void {
-    this.doingTasks = this.taskService.taskStore();
+    this.doingTasks = this.taskService.taskStore().doing;
   };
 
   drop(event: CdkDragDrop<Task[]>) {

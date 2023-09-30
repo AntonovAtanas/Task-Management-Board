@@ -26,7 +26,7 @@ export class TodoComponent implements OnInit {
   constructor(private taskService: TaskService){  }
 
   ngOnInit(): void {
-    this.todoTasks = this.taskService.taskStore();
+    this.todoTasks = this.taskService.taskStore().todo;
     // this.taskCounter = countTasks(this.taskService.taskStore(), 'todo');
   };
 

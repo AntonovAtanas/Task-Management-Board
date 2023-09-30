@@ -24,7 +24,7 @@ export class DoneComponent {
   constructor(private taskService: TaskService){}
 
   ngOnInit(): void {
-    this.doneTasks = this.taskService.taskStore();
+    this.doneTasks = this.taskService.taskStore().done;
   };
 
   drop(event: CdkDragDrop<Task[]>) {
