@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { v4 as uuid } from 'uuid';
 
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/interfaces/Task';
 import { TaskService } from 'src/app/services/task-service.service';
+import { generateId } from '../utils';
 
 @Component({
   selector: 'app-add-task',
@@ -28,7 +28,7 @@ export class AddTaskComponent {
 
     const newTask: Task = {
       task: userTask,
-      _taskId: this.generateId()
+      _taskId: generateId()
     }
 
     this.taskService.addTask(newTask);
@@ -36,7 +36,4 @@ export class AddTaskComponent {
     this.matDialogReference.closeAll();
   }
 
-  generateId(): string {
-    return uuid();
-  };
 }

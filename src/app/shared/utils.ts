@@ -1,5 +1,5 @@
-import { Task } from "../interfaces/Task";
+import { v4 as uuid } from 'uuid';
 
-export function countTasks(taskStore: Task[], status: string) {
-    return taskStore.filter(task => task.status === `${status}`).length;
-  }
+export function generateId(): string {
+  return uuid();
+};

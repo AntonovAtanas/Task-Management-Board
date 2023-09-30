@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskCardComponent } from 'src/app/shared/task-card/task-card.component';
 import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
