@@ -35,14 +35,6 @@ export class TaskService {
 
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-        // TODO: issue when move tasks from other to new containers
-
-        switch (event.item.data.status) {
-          case 'todo': event.item.data.status = event.container.id; break;
-          case 'doing': event.item.data.status = event.container.id; break;
-          case 'done': event.item.data.status = event.container.id; break;
-        }
-        
         // update taskStore
         this.saveTask(changedTask, event.previousIndex, event.currentIndex, event.previousContainer.id, event.container.id);
         
@@ -64,13 +56,6 @@ export class TaskService {
       }
 
       todoTasks[newContainer].splice(updatedIndex, 0, updatedTask);
-
-      
-      for (let i = 0; i < todoTasks.length; i++) {
-        if (todoTasks[i]._taskId === updatedTask._taskId) {
-          todoTasks[i].status = updatedTask.status
-        }
-      }
       
       localStorage.setItem('taskStore', JSON.stringify(todoTasks));
       this.taskStore.mutate(task => task = todoTasks);
