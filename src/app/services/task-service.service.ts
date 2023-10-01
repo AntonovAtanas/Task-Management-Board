@@ -22,13 +22,23 @@ export class TaskService {
     localStorage.setItem('taskStore', JSON.stringify(todoTasks));
   };
 
-  deleteTask() {
-    // todo
-  };
+  deleteTask(taskId: string) {
+    let taskStore = this.taskStore();
+
+    for (const taskGroup in taskStore) {
+      const tasks = taskStore[taskGroup];
+      const foundIndex = tasks.findIndex((task: Task) => task._taskId === taskId);
+
+      if (foundIndex !== -1) {
+        taskStore[taskGroup].splice(foundIndex, 1);
+        localStorage.setItem('taskStore', JSON.stringify(this.taskStore()));
+      }
+    }
+    
+  }
 
   drop(event: CdkDragDrop<Task[]>) {
     const changedTask = event.item.data
-
     
     if (event.previousContainer === event.container) {
         this.saveTask(changedTask, event.previousIndex, event.currentIndex, event.previousContainer.id, event.container.id);
@@ -45,7 +55,8 @@ export class TaskService {
           
         }
   }
-    saveTask(updatedTask: Task, previousIndex:number, updatedIndex: number, oldContainer: string, newContainer: string) {
+  
+  saveTask(updatedTask: Task, previousIndex:number, updatedIndex: number, oldContainer: string, newContainer: string) {
 
       let todoTasks = JSON.parse(localStorage.getItem('taskStore')!)
 
@@ -59,5 +70,5 @@ export class TaskService {
       
       localStorage.setItem('taskStore', JSON.stringify(todoTasks));
       this.taskStore.mutate(task => task = todoTasks);
-    }
+  }
 }

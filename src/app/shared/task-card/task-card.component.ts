@@ -19,7 +19,6 @@ export class TaskCardComponent {
 
 
   onDelete(id: string):void {
-    // todo
-    this.taskService.deleteTask()
+    this.taskService.deleteTask(id);
   }
 }

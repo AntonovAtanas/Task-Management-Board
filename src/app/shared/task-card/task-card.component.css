@@ -28,4 +28,5 @@
 
 .task-delete {
     fill: #ea5555;
+    cursor: pointer;
 }
