@@ -18,6 +18,8 @@ The app helps users to add new tasks, which are organized within the 'Todo' colu
 
 ## Screenshots
 
+
+
 ![image](https://github.com/AntonovAtanas/Task-Management-Board/assets/114076833/274827ee-0452-4cb4-bddc-cb32bbc0d5e2)
 
 ![image](https://github.com/AntonovAtanas/Task-Management-Board/assets/114076833/cdb9910d-ef15-4258-a6c2-91f2dfacdd45)
