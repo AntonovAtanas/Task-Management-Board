@@ -1,27 +1,26 @@
-# KanbanTaskManagement
+# Task Management Board
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
-## Development server
+## Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Live Demo - https://task-management-board-6b55d.web.app/
 
-## Code scaffolding
+## App summary
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The app helps users to add new tasks, which are organized within the 'Todo' column upon creation. With a drag-and-drop interface, users can easily rearrange tasks between columns and remove them when needed. To ensure data persistence, all tasks are stored in the browser's local storage.
 
-## Build
+## Features used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  - **Standalone components and directives**
+  - **Angular Signals for handling data**
+  - **Angular Material UI**
 
-## Running unit tests
+## Screenshots
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![image](https://github.com/AntonovAtanas/Task-Management-Board/assets/114076833/f1637864-dfcf-4e77-83f9-d034c76c600f)
 
-## Running end-to-end tests
+![image](https://github.com/AntonovAtanas/Task-Management-Board/assets/114076833/dc690115-2da3-454e-ad38-f43594ed5231)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
