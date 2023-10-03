@@ -4,21 +4,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Demo
 
-Live Demo - https://task-management-board-6b55d.web.app/
+Live Demo - https://task-management-board-239c31e2eaa7.herokuapp.com
 
 ## App summary
 
 The app helps users to add new tasks, which are organized within the 'Todo' column upon creation. With a drag-and-drop interface, users can easily rearrange tasks between columns and remove them when needed. To ensure data persistence, all tasks are stored in the browser's local storage.
 
-## Features used
+## New features used
 
   - **Standalone components and directives**
   - **Angular Signals for handling data**
   - **Angular Material UI**
+  - **Angular Universal**
 
 ## Deployment
 
-- The app is hosted on [Firebase](https://www.firebase.com/)
+- The app is hosted on [Heroku](https://www.heroku.com/)
 
 ## Screenshots
 
