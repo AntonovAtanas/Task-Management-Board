@@ -17,8 +17,16 @@ span {
     text-transform: uppercase;
     letter-spacing: 2.40px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .tasks-container {
     min-height: 200px;
+}
+
+@media (max-width: 397px) {
+    span {
+        white-space: pre-wrap;
+        display: block;
+    }
 }

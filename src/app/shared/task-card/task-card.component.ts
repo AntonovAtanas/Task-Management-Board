@@ -17,7 +17,6 @@ export class TaskCardComponent {
 
   constructor(private taskService: TaskService){}
 
-
   onDelete(id: string):void {
     this.taskService.deleteTask(id);
   }

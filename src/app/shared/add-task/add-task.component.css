@@ -50,3 +50,27 @@ button {
 input.ng-invalid.ng-touched {
     border-left: 5px solid #D87D4A;
 }
+
+@media (max-width: 620px) {
+    .container {
+        width: 350px;
+    }
+}
+
+@media (max-width: 450px) {
+    .container {
+        width: 250px;
+    }
+}
+
+@media (max-width: 325px) {
+    .container {
+        width: 200px;
+    }
+}
+
+@media (max-width: 260px) {
+    .container {
+        width: 150px;
+    }
+}

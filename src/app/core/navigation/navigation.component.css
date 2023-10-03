@@ -34,3 +34,21 @@ nav {
     line-height: 15px;
     font-weight: 500;
 }
+
+@media (max-width: 385px) {
+    .logo {
+        padding: 34px 12px;
+    }
+}
+
+@media (max-width: 385px) {
+    .button-container {
+        padding: 25px 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .add-task {
+        padding: 15px 14px;
+    }
+}

@@ -1,13 +1,24 @@
-import { Injectable, signal } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Task } from '../interfaces/Task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskStore = signal(JSON.parse(localStorage.getItem('taskStore') || '{"todo":[],"doing":[],"done":[]}'));
+  taskStore = signal(JSON.parse('{"todo":[],"doing":[],"done":[]}'));
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object){
+    if (isPlatformBrowser(this.platformId)) {
+      // Only execute this code on the client side (browser)
+      this.taskStore.mutate(taskStore => JSON.parse(localStorage.getItem('taskStore') || '{"todo":[],"doing":[],"done":[]}'));
+    } else {
+      // Execute this code on the server side
+      this.taskStore.mutate(taskStore => JSON.parse('{"todo":[],"doing":[],"done":[]}'));
+    }
+  }
 
   addTask(newTask: Task) {
     this.taskStore.mutate(data => data.todo.push(newTask));

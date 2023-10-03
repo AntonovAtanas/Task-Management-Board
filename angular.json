@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kanban-task-management",
+            "outputPath": "dist/kanban-task-management/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -95,6 +95,60 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/kanban-task-management/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "kanban-task-management:build:development",
+              "serverTarget": "kanban-task-management:server:development"
+            },
+            "production": {
+              "browserTarget": "kanban-task-management:build:production",
+              "serverTarget": "kanban-task-management:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "kanban-task-management:build:production",
+              "serverTarget": "kanban-task-management:server:production"
+            },
+            "development": {
+              "browserTarget": "kanban-task-management:build:development",
+              "serverTarget": "kanban-task-management:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

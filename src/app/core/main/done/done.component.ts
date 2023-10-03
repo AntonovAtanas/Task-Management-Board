@@ -28,6 +28,4 @@ export class DoneComponent {
   drop(event: CdkDragDrop<Task[]>) {
     this.taskService.drop(event);
   };
-
-
 }

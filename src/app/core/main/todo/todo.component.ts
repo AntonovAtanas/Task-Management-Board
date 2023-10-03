@@ -19,17 +19,14 @@ import { TaskService } from 'src/app/services/task-service.service';
 })
 export class TodoComponent implements OnInit {
   todoTasks!: Task[];
-  // taskCounter: Number = 0;
 
   constructor(private taskService: TaskService){  }
 
   ngOnInit(): void {
     this.todoTasks = this.taskService.taskStore().todo;
-    // this.taskCounter = countTasks(this.taskService.taskStore(), 'todo');
   };
 
   drop(event: CdkDragDrop<Task[]>) {
     this.taskService.drop(event);
-    // this.taskCounter = countTasks(this.taskService.taskStore(), 'todo');
   }
 }
